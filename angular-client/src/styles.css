@@ -1,0 +1,44 @@
+:root {
+  --font-family-base: 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --color-bg-page: #eef2f7;
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f4f6f8;
+  --color-bg-muted: #e5e7eb;
+  --color-bg-hover: #f8fafc;
+
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-brand: #1f3c88;
+
+  --color-border-default: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-border-focus: #64748b;
+
+  --color-brand-accent: #facc15;
+  --color-brand-accent-hover: #dcb63f;
+  --color-danger: #dc2626;
+  --color-danger-strong: #b42318;
+
+  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0) 38%),
+    linear-gradient(180deg, #f7f9fc 0%, var(--color-bg-page) 100%);
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}

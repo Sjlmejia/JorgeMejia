@@ -1,0 +1,36 @@
+<main class="bank-layout">
+
+  <header class="bank-header">
+    <div class="bank-brand">
+      <span class="bank-icon">💳</span>
+      <span class="bank-title">BANCO</span>
+    </div>
+  </header>
+
+  <div class="content-body">
+    <section class="bank-content">
+      <p class="error" *ngIf="errorMessage()">{{ errorMessage() }}</p>
+
+      <div class="bank-actions">
+        <input type="text" [ngModel]="searchTerm()" (ngModelChange)="onSearchChange($event)" placeholder="Search..." />
+
+        <button type="button" class="add-button" [routerLink]="['/products/new']">
+          Agregar
+        </button>
+      </div>
+
+      <app-product-list
+        [products]="paginatedProducts()"
+        [loading]="loading()"
+        [pageSize]="pageSize()"
+        [totalResults]="filteredProducts().length"
+        (pageSizeChange)="onPageSizeChange($event)"
+        (edit)="onEdit($event)"
+      >
+      </app-product-list>
+
+    </section>
+  </div>
+
+
+</main>

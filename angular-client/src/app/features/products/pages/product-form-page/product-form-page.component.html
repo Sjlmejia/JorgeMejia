@@ -1,0 +1,21 @@
+<main class="page">
+  <a class="back-link" [routerLink]="['/products']">← Volver al listado</a>
+
+  <p class="error" *ngIf="errorMessage()">{{ errorMessage() }}</p>
+
+  <section *ngIf="loading()" class="form-skeleton" aria-hidden="true">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </section>
+
+  <app-product-form
+    *ngIf="!loading()"
+    [selectedProduct]="product()"
+    [submitting]="submitting()"
+    (save)="onSave($event)"
+  />
+</main>

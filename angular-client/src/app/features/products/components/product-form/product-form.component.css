@@ -1,0 +1,155 @@
+.page-wrapper {
+  min-height: 100vh;
+  background: var(--color-bg-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 70px;
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bank-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-text-brand);
+}
+
+.bank-logo .icon {
+  font-size: 22px;
+}
+
+.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background: var(--color-bg-surface);
+}
+
+.form-card {
+  width: 720px;
+  background: var(--color-bg-surface);
+  padding: 0 40px;
+}
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--color-text-primary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-bg-muted);
+  margin-bottom: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 25px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.field input {
+  height: 42px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 14px;
+  background: var(--color-bg-surface);
+  transition: border 0.2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+}
+
+.field input.invalid {
+  border-color: var(--color-danger);
+}
+
+.field small {
+  font-size: 12px;
+  color: var(--color-danger);
+  min-height: 16px;
+}
+
+.actions {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  width: 140px;
+  height: 42px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary {
+  background: var(--color-bg-muted);
+  color: var(--color-text-primary);
+}
+
+.primary {
+  background: var(--color-brand-accent);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+  .form-card {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

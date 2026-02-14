@@ -1,0 +1,89 @@
+<section class="table-wrapper">
+
+  <div class="table-card">
+
+    <div class="table-scroll" *ngIf="!loading(); else loadingBlock">
+
+      <table *ngIf="products().length > 0; else emptyState">
+
+        <thead>
+          <tr>
+            <th class="logo-col">Logo</th>
+            <th>Nombre del producto</th>
+            <th>Descripción</th>
+            <th>Fecha de liberación</th>
+            <th>Fecha de reestructuración</th>
+            <th class="menu-col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let product of products(); trackBy: trackById">
+
+            <td>
+              <div class="logo-circle">
+                <img [src]="product.logo" [alt]="product.name" (error)="onImageError($event)">
+              </div>
+            </td>
+
+            <td class="name">{{ product.name }}</td>
+
+            <td class="description">{{ product.description }}</td>
+
+            <td>
+              {{ product.date_release | date:'dd/MM/yyyy' }}
+            </td>
+
+            <td>
+              {{ product.date_revision | date:'dd/MM/yyyy' }}
+            </td>
+
+            <td class="menu-cell">
+              <button
+                type="button"
+                class="menu-trigger"
+                (click)="toggleMenu(product.id, $event)">
+                ⋮
+              </button>
+
+              <div class="row-menu" *ngIf="openedMenuId() === product.id" (click)="$event.stopPropagation()">
+                <button (click)="onEdit(product)">Editar</button>
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div class="table-footer" *ngIf="products().length > 0">
+      <span>{{ totalResults() }} Resultados</span>
+
+      <div class="rows-selector">
+        <select [value]="pageSize()" (change)="onPageSizeSelectChange($event)">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #loadingBlock>
+    <div class="skeleton-list">
+      <div class="skeleton-row" *ngFor="let item of [1,2,3,4,5]">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      No se encontraron productos.
+    </div>
+  </ng-template>
+
+</section>

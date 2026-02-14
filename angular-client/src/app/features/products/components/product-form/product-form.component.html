@@ -1,0 +1,92 @@
+<div class="page-wrapper">
+  <header class="topbar">
+    <div class="bank-logo">
+      <span class="icon">💳</span>
+      <span>BANCO</span>
+    </div>
+  </header>
+
+  <div class="form-container">
+    <form class="form-card" [formGroup]="form" (ngSubmit)="submit()">
+      <h2 class="title">Formulario de Registro</h2>
+      <div class="divider"></div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>ID</label>
+          <input
+            formControlName="id"
+            [class.invalid]="hasError('id')"
+            [readonly]="editing()"
+          />
+          <small *ngIf="hasError('id')">{{ getError('id') }}</small>
+        </div>
+
+        <div class="field">
+          <label>Nombre</label>
+          <input
+            formControlName="name"
+            [class.invalid]="hasError('name')"
+          />
+          <small *ngIf="hasError('name')">{{ getError('name') }}</small>
+        </div>
+
+        <div class="field">
+          <label>Descripción</label>
+          <input
+            formControlName="description"
+            [class.invalid]="hasError('description')"
+          />
+          <small *ngIf="hasError('description')">{{ getError('description') }}</small>
+        </div>
+
+        <div class="field">
+          <label>Logo</label>
+          <input
+            formControlName="logo"
+            [class.invalid]="hasError('logo')"
+          />
+          <small *ngIf="hasError('logo')">{{ getError('logo') }}</small>
+        </div>
+
+        <div class="field">
+          <label>Fecha Liberación</label>
+          <input
+            type="date"
+            formControlName="date_release"
+            [class.invalid]="hasError('date_release')"
+          />
+          <small *ngIf="hasError('date_release')">{{ getError('date_release') }}</small>
+        </div>
+
+        <div class="field">
+          <label>Fecha Revisión</label>
+          <input
+            type="date"
+            formControlName="date_revision"
+            [class.invalid]="hasError('date_revision') || hasDatePairError()"
+          />
+          <small *ngIf="hasError('date_revision')">
+            {{ getError('date_revision') }}
+          </small>
+          <small *ngIf="!hasError('date_revision') && hasDatePairError()">
+            La fecha debe ser exactamente un año posterior.
+          </small>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn secondary" (click)="resetForm()">
+          Reiniciar
+        </button>
+        <button
+          type="submit"
+          class="btn primary"
+          [disabled]="form.invalid || form.pending || submitting()"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
