@@ -4,7 +4,7 @@ Sistema para gestión de productos financieros con backend en Node.js y frontend
 
 ## Arquitectura usada (DDD)
 
-El enfoque DDD está aplicado principalmente en el frontend (`angular-client`) usando una organización por capas dentro de la feature `products`:
+El enfoque DDD está aplicado principalmente en el frontend (`bp_test`) usando una organización por capas dentro de la feature `products`:
 
 - `domain`: entidades y contratos (interfaces de repositorio).
 - `application`: casos de uso/facades que orquestan reglas de negocio.
@@ -23,7 +23,7 @@ repo-interview-main/
 │   ├── interfaces/
 │   ├── const/
 │   └── main.ts
-└── angular-client/                       # Frontend Angular
+└── bp_test/                       # Frontend Angular
     └── src/app/features/products/
         ├── domain/
         │   ├── entities/
@@ -60,7 +60,7 @@ Ejemplo: `GET http://localhost:3002/bp/products`
 En otra terminal:
 
 ```bash
-cd angular-client
+cd bp_test
 npm install
 npm start
 ```
@@ -69,7 +69,7 @@ Frontend disponible en `http://localhost:4200`.
 
 ## Proxy frontend -> backend
 
-Configurado en `angular-client/proxy.conf.json`:
+Configurado en `bp_test/proxy.conf.json`:
 
 ```json
 {
@@ -90,7 +90,7 @@ npm run start:dev
 npm run build
 ```
 
-Frontend (`angular-client`):
+Frontend (`bp_test`):
 
 ```bash
 npm start
